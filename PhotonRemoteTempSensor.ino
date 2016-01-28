@@ -1,8 +1,8 @@
-//This code was written by Ace Levenburg <acelevenberg@gmail.com> and Jennifer Fox <jenfoxbot@gmail.com>
+//This code was written by Ace Levenberg <acelevenberg@gmail.com> and Jennifer Fox <jenfoxbot@gmail.com>
 /*
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
- * <jenfoxbot@gmail.com> and <acelevenburg@gmail.com> wrote this file.  As long as you retain this notice you
+ * <jenfoxbot@gmail.com> and <acelevenberg@gmail.com> wrote this file.  As long as you retain this notice you
  * can do whatever you want with this stuff. If we meet some day, and you think
  * this stuff is worth it, you can buy me a beer in return.
  * ----------------------------------------------------------------------------
