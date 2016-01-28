@@ -14,8 +14,8 @@
 #include "SparkFunPhant/SparkFunPhant.h"
 
 const char server[] = "data.sparkfun.com"; // Phant destination server
-const char publicKey[] = "VGXjREG6wZIzrZdMvjwA"; // Phant public key
-const char privateKey[] = "9Yg650Y1ERtMz12wdEWn"; // Phant private key
+const char publicKey[] = "INSERT_PUBLIC_KEY_HERE"; // Phant public key
+const char privateKey[] = "INSERT_PRIVATE_KEY_HERE"; // Phant private key
 
 Phant phant(server, publicKey, privateKey); // Create a Phant object
 
