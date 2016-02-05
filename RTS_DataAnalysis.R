@@ -23,19 +23,18 @@ tempPlot = function(file = ''){
 	timestamp_raw = temp$Timestamp
 	ts_placeholder = gsub("T", " ", timestamp_raw)
 	timestamp = gsub("Z", "", ts_placeholder)
-	my_timezone = as.POSIXlt(timestamp, origin="1970-01-01") 
+	UTC_timezone = as.POSIXct(timestamp, tz="UTC") 
+	my_timezone = format(UTC_timezone, tz = Sys.timezone()) #Sys.timezone() outputs the local timezone
 
 	#Replace temp data with local timezone 
 	temp$Timestamp = my_timezone
 
-
 	#Plot temperature data
-	plot(temp$Timestamp, temp$Temp_C, main = "Temperature (°C) vs. Time", ylab = "Temperature (°C)", xlab = "Time (hours)", xaxt = "n")
-	axis.POSIXct(1, my_timezone, at = , labels = TRUE, format = "%H:00") #Adjust or remove the format variable to change the time axis
+	plot(as.POSIXct(temp$Timestamp), temp$Temp_C, main = "Temperature (°C) vs. Time", ylab = "Temperature (°C)", xlab = "Time", xaxt = "n", pch = 20)
+	axis.POSIXct(1, my_timezone, labels = TRUE) #Use the "format" argument to adjust the axis label (e.g. to print hours use: format = "%H:00" )
 	dev.new()
-	plot(temp$Timestamp, temp$Temp_F, main = "Temperature (°F) vs. Time", ylab = "Temperature (°F)", xlab = "Time (hours)", xaxt = "n")
-	axis.POSIXct(1, my_timezone, labels = TRUE, format = "%H:00")
-
+	plot(temp$Timestamp, temp$Temp_F, main = "Temperature (°F) vs. Time", ylab = "Temperature (°F)", xlab = "Time", xaxt = "n", pch = 20)
+	axis.POSIXct(1, my_timezone, labels = TRUE)
 
 	#Calculate and output basic statistical analysis
 	end_date = temp$Timestamp[1]
@@ -46,6 +45,5 @@ tempPlot = function(file = ''){
 	cat("Data Stream Start Date:", as.character(start_date), "\n", "Data Stream End Date:", as.character(end_date), "\n\n")
 	cat("Summary of Temperature Data (°C)", "\n", "Average (Mean) Temperature: ", t_C["Mean"] ,"\n", "Minimum Temp: ", t_C["Min."], "\n", "Maximum Temp: ", t_C["Max."], "\n")
 	cat("Summary of Temperature Data (°F)", "\n", "Average (Mean) Temp: ", t_F["Mean"] ,"\n", "Minimum Temp: ", t_F["Min."], "\n", "Maximum Temp: ", t_F["Max."], "\n")
-
 }
 
